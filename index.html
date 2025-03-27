@@ -1,0 +1,86 @@
+<html>
+<head>
+    <title>Head Tracker Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="instructions">
+        <h1>Close your eyes to start</h1>
+        <p>Keep your face centered and close your eyes to begin the game. Open your eyes or move out of frame to pause.</p>
+        <p id="status">Status: Waiting for face detection...</p>
+    </div>
+    <div id="debug" style="position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.5); color: white; padding: 5px; display: none;">
+        <p>Face Detected: <span id="face-detected">false</span></p>
+        <p>Eyes Open: <span id="eyes-open">unknown</span></p>
+        <p>Head Rotation (Y): <span id="head-rotation-y">0</span></p>
+         <p>Head Rotation (X): <span id="head-rotation-x">0</span></p>
+    </div>
+    <video id="webcam" autoplay playsinline style="display: none;"></video>
+    <canvas id="overlay"></canvas>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "@tensorflow/tfjs": "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.17.0/dist/tf.es2017.min.js",
+            "@tensorflow-models/face-landmarks-detection": "https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection@1.0.5/dist/face-landmarks-detection.es2017.min.js",
+            "three": "https://cdn.jsdelivr.net/npm/three@0.164.0/build/three.module.js"
+        }
+    }
+    </script>
+    <script type="module" src="config.js"></script>
+    <script type="module" src="script.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Head Tracker Game</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- Favicon (optional, simple example) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎧</text></svg>">
+</head>
+<body>
+    <div id="instructions">
+        <h1>Close Your Eyes Game</h1>
+        <p>Center your face in the camera view.</p>
+        <p><strong>Close your eyes</strong> to start and control the game.</p>
+        <p>Open your eyes or move out of frame to pause.</p>
+        <p id="status">Status: Initializing...</p>
+    </div>
+
+    <!-- Debugging Information Overlay -->
+    <div id="debug" style="position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.7); color: lime; padding: 10px; font-family: monospace; display: none; border-radius: 5px; z-index: 100;">
+        <p>Face Detected: <span id="face-detected">...</span></p>
+        <p>Eyes Open: <span id="eyes-open">...</span></p>
+        <p>Avg EAR: <span id="avg-ear">...</span></p>
+        <p>Head Yaw (L/R): <span id="head-rotation-y">...</span></p>
+        <p>Head Pitch (U/D): <span id="head-rotation-x">...</span></p>
+        <p>Game State: <span id="game-state">Paused</span></p>
+        <p>Last Direction: <span id="last-direction">None</span></p>
+    </div>
+
+    <!-- Webcam Video Element (hidden but necessary for input) -->
+    <video id="webcam" autoplay playsinline muted width="640" height="480" style="display: none; position: absolute; top: 0; left: 0; transform: scaleX(-1);"></video>
+    <!-- Canvas for drawing overlays (like landmarks for debugging) -->
+    <canvas id="overlay"></canvas>
+
+    <!-- Import Map for ES Modules -->
+    <script type="importmap">
+    {
+        "imports": {
+            "@tensorflow/tfjs": "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.19.0/dist/tf.es2017.min.js",
+            "@tensorflow-models/face-landmarks-detection": "https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection@1.0.5/dist/face-landmarks-detection.es2017.min.js",
+            "@mediapipe/face_mesh": "https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4.1633559619/face_mesh.js"
+        }
+    }
+    </script>
+
+    <!-- Load Configuration and Main Script -->
+    <script type="module" src="config.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
