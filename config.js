@@ -2,36 +2,6 @@ export const config = {
     // Face detection model parameters
     modelConfig: {
         runtime: 'mediapipe', // or 'tfjs'
-        solutionPath: 'https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4.1633559619/', // Only needed for mediapipe runtime
-        maxFaces: 1,
-        refineLandmarks: true, // Required for iris tracking
-    },
-
-    // Eye tracking thresholds
-    eyeClosedThreshold: 0.3, // Lower value means more sensitivity to closing
-
-    // Head rotation thresholds (in radians)
-    headRotationThresholdY: 0.2, // Left/Right turn sensitivity
-    headRotationThresholdX: 0.15, // Up/Down look sensitivity
-
-    // Audio settings
-    audioEnabled: true,
-    leftTurnPitch: 300,
-    rightTurnPitch: 500,
-    lookUpPitch: 700,
-    lookDownPitch: 200,
-    audioDuration: 0.1, // seconds
-    audioVolume: 0.5, // 0 to 1
-
-    // Debug settings
-    showDebugInfo: false, // Set to true to show debug overlay
-    drawLandmarks: false, // Set to true to draw face landmarks on the canvas
-};
-
-export const config = {
-    // Face detection model parameters
-    modelConfig: {
-        runtime: 'mediapipe', // or 'tfjs'
         // Using the full path to the mediapipe solution assets
         solutionPath: 'https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4.1633559619/', // Ensure this path is correct
         maxFaces: 1,
@@ -65,4 +35,3 @@ export const config = {
     showDebugInfo: false, // Set to true to show text debug info on screen
     drawLandmarks: false, // Set to true to draw face landmarks on the canvas overlay
 };
-
